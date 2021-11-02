@@ -12,7 +12,6 @@ export const App = () => {
             {arr.map(item => (
                 <CartItem key={item.id}
                           {...item}
-                          items={items}
                           arr={arr}
                           setArr={setArr}
                           stateId={id}

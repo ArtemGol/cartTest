@@ -8,10 +8,9 @@ interface IProps {
     stateId: number | undefined;
     arr: { name: string, id: number }[];
     setArr: Function;
-    items: { name: string, id: number }[];
 }
 
-export const CartItem = ({name, id, stateId, setId, arr, setArr, items}: IProps) => {
+export const CartItem = ({name, id, stateId, setId, arr, setArr}: IProps) => {
     const inputEl = useRef<any>(null);
     const onButtonClick = () => {
         inputEl?.current?.focus();
@@ -29,11 +28,11 @@ export const CartItem = ({name, id, stateId, setId, arr, setArr, items}: IProps)
     let timeoutId: ReturnType<typeof setTimeout> | NodeJS.Timer | any;
     const handleClick = (e: any) => {
         if (e.type === "click"){
-            timeoutId = setTimeout(() => setArr([...arr.filter(item => item.id === id), ...items.filter(item => item.id !== id)]), 500);
+            timeoutId = setTimeout(() => setArr([...arr.filter(item => item.id === id), ...arr.filter(item => item.id !== id)]), 500);
         } else {
             clearTimeout(timeoutId - 1);
             clearTimeout(timeoutId);
-            setArr([...items.filter(item => item.id !== id), ...arr.filter(item => item.id === id)])
+            setArr([...arr.filter(item => item.id !== id), ...arr.filter(item => item.id === id)])
         }
     }
 
