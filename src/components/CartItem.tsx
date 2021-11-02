@@ -11,7 +11,7 @@ interface IProps {
 }
 
 export const CartItem = ({name, id, stateId, setId, arr, setArr}: IProps) => {
-    const inputEl = useRef<any>(null);
+    const inputEl = useRef<HTMLInputElement | null>(null);
     const onButtonClick = () => {
         inputEl?.current?.focus();
     };
