@@ -66,7 +66,7 @@ const MainBlock = styled.div`
   grid-gap: 20px;
   border-radius: 4px;
   border: 1px solid;
-  width: 300px;
+  min-width: 300px;
 
   :hover {
     background-color: skyblue;
