@@ -40,9 +40,7 @@ export const CartItem = ({name, id, stateId, setId, arr, setArr}: IProps) => {
         <MainBlock onClick={handleClick} onDoubleClick={handleClick}>
             {stateId === id
                 ? <>
-                    <CustomInput value={value}
-                                 type="text"
-                                 onChange={e => setValue(e.target.value)}
+                    <CustomInput value={value} onChange={e => setValue(e.target.value)}
                                  onClick={e => e.stopPropagation()} ref={inputEl}/>
                     <span onClick={changeNewName}>ok</span>
                 </>
