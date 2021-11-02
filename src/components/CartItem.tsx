@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {SyntheticEvent, useRef, useState} from 'react';
 import styled from "styled-components";
 
 interface IProps {
@@ -16,17 +16,17 @@ export const CartItem = ({name, id, stateId, setId, arr, setArr}: IProps) => {
         inputEl?.current?.focus();
     };
     const [value, setValue] = useState(name);
-    const changeName = async (e: any) => {
+    const changeName = async (e: SyntheticEvent) => {
         e.stopPropagation();
         await setId(id);
         onButtonClick();
     }
-    const changeNewName = (e: any) => {
+    const changeNewName = (e: SyntheticEvent) => {
         e.stopPropagation();
         setId(undefined);
     }
     let timeoutId: ReturnType<typeof setTimeout> | NodeJS.Timer | any;
-    const handleClick = (e: any) => {
+    const handleClick = (e: SyntheticEvent) => {
         if (e.type === "click") {
             timeoutId = setTimeout(() => setArr([...arr.filter(item => item.id === id), ...arr.filter(item => item.id !== id)]), 500);
         } else {
