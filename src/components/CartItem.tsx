@@ -27,7 +27,7 @@ export const CartItem = ({name, id, stateId, setId, arr, setArr}: IProps) => {
     }
     let timeoutId: ReturnType<typeof setTimeout> | NodeJS.Timer | any;
     const handleClick = (e: any) => {
-        if (e.type === "click"){
+        if (e.type === "click") {
             timeoutId = setTimeout(() => setArr([...arr.filter(item => item.id === id), ...arr.filter(item => item.id !== id)]), 500);
         } else {
             clearTimeout(timeoutId - 1);
@@ -39,19 +39,17 @@ export const CartItem = ({name, id, stateId, setId, arr, setArr}: IProps) => {
     return (
         <MainBlock onClick={handleClick} onDoubleClick={handleClick}>
             {stateId === id
-                ? <CustomInput value={value}
-                               type="text"
-                               onChange={e => setValue(e.target.value)}
-                               onClick={e => e.stopPropagation()} ref={inputEl}/>
-                : <span>{value}</span>
-            }
-            {stateId === id
-                ? <span onClick={changeNewName}>
-                ok
-            </span>
-                : <span onClick={changeName}>
-                change
-            </span>
+                ? <>
+                    <CustomInput value={value}
+                                 type="text"
+                                 onChange={e => setValue(e.target.value)}
+                                 onClick={e => e.stopPropagation()} ref={inputEl}/>
+                    <span onClick={changeNewName}>ok</span>
+                </>
+                : <>
+                    <span>{value}</span>
+                    <span onClick={changeName}>change</span>
+                </>
             }
         </MainBlock>
     )
