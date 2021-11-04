@@ -28,11 +28,11 @@ export const CartItem = ({name, id, stateId, setId, arr, setArr}: IProps) => {
     let timeoutId: ReturnType<typeof setTimeout> | NodeJS.Timer | any;
     const handleClick = (e: SyntheticEvent) => {
         if (e.type === "click") {
-            timeoutId = setTimeout(() => setArr([...arr.filter(item => item.id === id), ...arr.filter(item => item.id !== id)]), 500);
+            timeoutId = setTimeout(() => setArr([...arr.filter(item => item.id !== arr[0].id), ...arr.filter(item => item.id === arr[0].id)]), 500);
         } else {
             clearTimeout(timeoutId - 1);
             clearTimeout(timeoutId);
-            setArr([...arr.filter(item => item.id !== id), ...arr.filter(item => item.id === id)])
+            setArr([...arr.filter(item => item.id === arr[arr.length - 1].id), ...arr.filter(item => item.id !== arr[arr.length - 1].id)]);
         }
     }
 
